@@ -6,7 +6,11 @@ using MinimalAPI.Dominio.Interfaces;
 using MinimalAPI.Dominio.Servicos;
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddScoped<IAdministradorServico, AdministradorServico>();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DbContexto>(options =>
 {
@@ -18,9 +22,11 @@ builder.Services.AddDbContext<DbContexto>(options =>
 
 var app = builder.Build();
 
+
+
 app.MapGet("/", () => "Hello World!");
 
-app.MapPost("/login", ([FromBody] LoginDTO loginDTO ,IAdministradorServico administradorServico) => 
+app.MapPost("/login", ([FromBody] LoginDTO loginDTO, IAdministradorServico administradorServico) =>
 {
     if (administradorServico.Login(loginDTO) != null)
     {
@@ -32,5 +38,8 @@ app.MapPost("/login", ([FromBody] LoginDTO loginDTO ,IAdministradorServico admin
     }
 }
 );
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.Run();
