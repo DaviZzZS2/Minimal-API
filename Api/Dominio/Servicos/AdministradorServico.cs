@@ -1,5 +1,6 @@
-using MinimalApi.Dominio.DTOs;
+
 using MinimalApi.Infraestrutura.Db;
+using MinimalAPI.Dominio.DTOs;
 using MinimalAPI.Dominio.Interfaces;
 using MinimalAPI.Entidades;
 

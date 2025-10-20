@@ -1,4 +1,3 @@
-using MinimalApi.Dominio.DTOs;
 using MinimalAPI.Dominio.DTOs;
 using MinimalAPI.Entidades;
 
